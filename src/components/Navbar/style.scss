@@ -1,0 +1,51 @@
+@import '../../variables';
+
+.navbar {
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 999;
+  &__container {
+    display: flex;
+    height: 160px;
+    max-height: 160px;
+    transition: 300ms;
+  }
+  &__logo {
+    height: 100%;
+  }
+  &__logo-container {
+    align-self: center;
+    height: 99px;
+    margin-right: 40px;
+    max-height: 99px;
+    width: 174px;
+  }
+  &__menuItem {
+    border-bottom: 4px solid transparent;
+    margin-right: 20px;
+    margin-top: 92px;
+    text-align: center;
+    transition-duration: $transition-duration;
+    width: 120px;
+    &:hover {
+      border-bottom-color: transparentize($yellow, 0.4);
+    }
+    &--active {
+      border-bottom-color: $yellow;
+    }
+  }
+  &--floating {
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, .2);
+  }
+  &--floating &__container {
+    max-height: 50px;
+  }
+  &--floating &__logo-container {
+    max-height: 40px;
+  }
+  &--floating &__menuItem {
+    margin-top: 15px;
+  }
+}

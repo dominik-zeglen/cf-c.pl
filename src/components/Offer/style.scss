@@ -1,0 +1,37 @@
+@import '../../variables';
+
+.offer {
+  display: grid;
+  grid-column-gap: 40px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 80px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &__image {
+    width: 100%;
+  }
+  &__image-container {
+    grid-column-end: span 2;
+  }
+  &__content {
+  }
+  &__content-container {
+  }
+  &__content-header {
+    font-family: $font-header;
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 40px;
+    margin: 10px 0 50px;
+    &:after {
+      background-color: $yellow;
+      bottom: -4px;
+      content: '';
+      display: block;
+      height: 4px;
+      position: relative;
+      width: 80px;
+    }
+  }
+}
