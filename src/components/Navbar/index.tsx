@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import * as logo from '../../assets/images/logo.png';
+import * as logo from '../../assets/images/logo_wizyt_biel.svg';
 import {isScrolledTo} from '../../utils';
 import MenuItem, {IMenuItem} from './MenuItem';
 import './style.scss';
