@@ -7,7 +7,7 @@ import {ApolloProvider, Query} from 'react-apollo';
 import './App.scss';
 import Page from './components/Page';
 import Scroll from './containers/Scroll';
-import { OFFER_DIRECTORY, SITE_ELEMENTS_DIRECTORY, SITEDATA } from "./query";
+import { OFFER_DIRECTORY, SITE_ELEMENTS_DIRECTORY, SITEDATA, TEAM_DIRECTORY } from "./query";
 
 const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
@@ -22,11 +22,12 @@ class App extends React.Component {
       <ApolloProvider client={apolloClient}>
         <Query query={SITEDATA} variables={{
           offerDirectory: OFFER_DIRECTORY,
-            siteElementsDirectory: SITE_ELEMENTS_DIRECTORY
+            siteElementsDirectory: SITE_ELEMENTS_DIRECTORY,
+	  teamDirectory: TEAM_DIRECTORY
         }}>
         {({data, loading, error}) => {
           if (error) {
-            return "Page inavailable"
+            return "Page unavailable"
           }
           if (loading) {
             return "Loading..."

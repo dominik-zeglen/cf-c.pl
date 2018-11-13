@@ -17,13 +17,16 @@ interface IPageProps {
     siteElements: {
       pages: IPage[];
     };
+    team: {
+      name: string;
+      pages: IPage[];
+    };
   };
   scrollPosition: number;
 }
 
 export const Page: React.SFC<IPageProps> = ({data, scrollPosition}) => {
-  const aboutMe = getPageBySlug(data.siteElements.pages, 'o-mnie');
-  const aboutMeFields = getPageFields(aboutMe);
+  const team = data.team.pages.map(getPageFields)
 
   const contactForm = getPageBySlug(data.siteElements.pages, 'form');
   const contactFormFields = getPageFields(contactForm);
@@ -45,18 +48,32 @@ export const Page: React.SFC<IPageProps> = ({data, scrollPosition}) => {
         }
       />
       <main className="container">
-        <Section id="o-mnie" title={aboutMe.name}>
-          <div className="about-me">
-            <div className="about-me__image-container">
-              <img
-                className="about-me__image"
-                src={'/static/' + aboutMeFields.image}
-              />
+        <Section id="o-mnie" title={data.team.name}>
+          {team.map((member, memberIndex) => memberIndex % 2 === 0 ? (
+            <div className="about-me">
+              <div className="about-me__image-container">
+                <img
+                  className="about-me__image"
+                  src={'/static/' + member.image}
+                />
+              </div>
+              <div className="about-me__content">
+                <RichText content={member.content} />
+              </div>
             </div>
-            <div className="about-me__content">
-              <RichText content={aboutMeFields.content} />
+          ) : (
+            <div className="about-me">
+              <div className="about-me__content">
+                <RichText content={member.content} />
+              </div>
+              <div className="about-me__image-container">
+                <img
+                  className="about-me__image"
+                  src={'/static/' + member.image}
+                />
+              </div>
             </div>
-          </div>
+          ))}
         </Section>
         <Section id="oferta" title={data.offers.name}>
           {data.offers.pages.map((offer, offerIndex) => (
