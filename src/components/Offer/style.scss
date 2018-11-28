@@ -1,9 +1,9 @@
-@import '../../variables';
+@import "../../variables";
 
 .offer {
   display: grid;
   grid-column-gap: 40px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   margin-bottom: 80px;
   &:last-child {
     margin-bottom: 0;
@@ -12,13 +12,18 @@
     width: 100%;
   }
   &__image-container {
-    grid-column-end: span 2;
+    grid-column-end: span 4;
+    &--full {
+      grid-column-start: 2;
+    }
   }
   &__content {
   }
   &__content-container {
+    grid-column-end: span 2;
   }
-  &__content-header {
+  &__header {
+    display: inline-block;
     font-family: $font-header;
     font-size: 1.5rem;
     font-style: italic;
@@ -27,11 +32,15 @@
     &:after {
       background-color: $yellow;
       bottom: -4px;
-      content: '';
+      content: "";
       display: block;
       height: 4px;
       position: relative;
       width: 80px;
     }
+  }
+  &__header-container {
+    display: flex;
+    justify-content: center;
   }
 }
