@@ -48,7 +48,7 @@ export const Page: React.SFC<IPageProps> = ({ data, scrollPosition }) => {
         }
       />
       <main className="container">
-        <Section id="o-mnie" title={data.team.name}>
+        <Section id="zespol" title={data.team.name}>
           {team.map((member, memberIndex) =>
             memberIndex % 2 === 0 ? (
               <div className="about-me" key={memberIndex}>
