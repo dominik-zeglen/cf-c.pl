@@ -122,11 +122,11 @@
   },
   "proxy": {
     "/graphql": {
-      "target": "http://localhost:8000/graphql",
+      "target": "http://cf-c.pl/graphql",
       "changeOrigin": true
     },
     "/static": {
-      "target": "http://localhost:8000",
+      "target": "http://cf-c.pl",
       "changeOrigin": true
     }
   }
