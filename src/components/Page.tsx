@@ -1,12 +1,12 @@
-import * as React from 'react';
+import * as React from "react";
 
-import {getPageBySlug, getPageFields, IPage} from '../utils';
-import Footer from './Footer';
-import Hero from './Hero';
-import Navbar from './Navbar';
-import Offer from './Offer';
-import RichText from './RichText';
-import Section from './Section';
+import { getPageBySlug, getPageFields, IPage } from "../utils";
+import Footer from "./Footer";
+import Hero from "./Hero";
+import Navbar from "./Navbar";
+import Offer from "./Offer";
+import RichText from "./RichText";
+import Section from "./Section";
 
 interface IPageProps {
   data: {
@@ -25,16 +25,16 @@ interface IPageProps {
   scrollPosition: number;
 }
 
-export const Page: React.SFC<IPageProps> = ({data, scrollPosition}) => {
-  const team = data.team.pages.map(getPageFields)
+export const Page: React.SFC<IPageProps> = ({ data, scrollPosition }) => {
+  const team = data.team.pages.map(getPageFields);
 
-  const contactForm = getPageBySlug(data.siteElements.pages, 'form');
+  const contactForm = getPageBySlug(data.siteElements.pages, "form");
   const contactFormFields = getPageFields(contactForm);
 
-  const contactInfo = getPageBySlug(data.siteElements.pages, 'contact-info');
+  const contactInfo = getPageBySlug(data.siteElements.pages, "contact-info");
   const contactInfoFields = getPageFields(contactInfo);
 
-  const footer = getPageBySlug(data.siteElements.pages, 'footer');
+  const footer = getPageBySlug(data.siteElements.pages, "footer");
   const footerFields = getPageFields(footer);
 
   return (
@@ -43,37 +43,39 @@ export const Page: React.SFC<IPageProps> = ({data, scrollPosition}) => {
       <Hero
         text={
           data.siteElements.pages
-            .filter(page => page.slug === 'hero')[0]
-            .fields.filter(field => field.name === 'content')[0].value
+            .filter(page => page.slug === "hero")[0]
+            .fields.filter(field => field.name === "content")[0].value
         }
       />
       <main className="container">
         <Section id="o-mnie" title={data.team.name}>
-          {team.map((member, memberIndex) => memberIndex % 2 === 0 ? (
-            <div className="about-me">
-              <div className="about-me__image-container">
-                <img
-                  className="about-me__image"
-                  src={'/static/' + member.image}
-                />
+          {team.map((member, memberIndex) =>
+            memberIndex % 2 === 0 ? (
+              <div className="about-me" key={memberIndex}>
+                <div className="about-me__image-container">
+                  <img
+                    className="about-me__image"
+                    src={"/static/" + member.image}
+                  />
+                </div>
+                <div className="about-me__content">
+                  <RichText content={member.content} />
+                </div>
               </div>
-              <div className="about-me__content">
-                <RichText content={member.content} />
+            ) : (
+              <div className="about-me" key={memberIndex}>
+                <div className="about-me__content">
+                  <RichText content={member.content} />
+                </div>
+                <div className="about-me__image-container">
+                  <img
+                    className="about-me__image"
+                    src={"/static/" + member.image}
+                  />
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="about-me">
-              <div className="about-me__content">
-                <RichText content={member.content} />
-              </div>
-              <div className="about-me__image-container">
-                <img
-                  className="about-me__image"
-                  src={'/static/' + member.image}
-                />
-              </div>
-            </div>
-          ))}
+            )
+          )}
         </Section>
         <Section id="oferta" title={data.offers.name}>
           {data.offers.pages.map((offer, offerIndex) => (
@@ -89,12 +91,12 @@ export const Page: React.SFC<IPageProps> = ({data, scrollPosition}) => {
             <div className="contact__info">
               <h4 className="contact__info-header">{contactInfo.name}</h4>
               <div className="contact__info-email">
-                <a href={'mailto:' + contactInfoFields.email}>
+                <a href={"mailto:" + contactInfoFields.email}>
                   {contactInfoFields.email}
                 </a>
               </div>
               <div className="contact__info-phone">
-                <a href={'tel:' + contactInfoFields.phone}>
+                <a href={"tel:" + contactInfoFields.phone}>
                   {contactInfoFields.phone}
                 </a>
               </div>
