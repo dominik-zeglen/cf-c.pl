@@ -49,6 +49,9 @@ html {
   grid-template-columns: repeat(3, 1fr);
   margin-bottom: 60px;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
   &__image {
     width: 100%;
   }
